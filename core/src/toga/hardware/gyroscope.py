@@ -43,10 +43,9 @@ class Gyroscope:
 
     @property
     def app(self) -> App:
-        """The app with which the camera is associated"""
         return self._app
 
-    def start(self, callback)
+    def start(self, callback):
         self._impl.start(callback)
     
     def stop(self):

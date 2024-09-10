@@ -233,7 +233,6 @@ class App:
 
         # Keep an accessible copy of the app singleton instance
         App.app = self
-
         # We need a distribution name to load app metadata.
         if app_name is None:
             # If the code is contained in appname.py, and you start the app using
@@ -715,7 +714,7 @@ class App:
 
 
     @property
-    def Gyroscope(self) -> Gyroscope:
+    def gyroscope(self) -> Gyroscope:
         """A representation of the device's camera (or cameras)."""
         try:
             return self._gyroscope
@@ -724,7 +723,7 @@ class App:
             # This will raise an exception if the platform doesn't implement
             # the Camera API.
             self._gyroscope = Gyroscope(self)
-        return self._camera
+        return self._gyroscope
 
     @property
     def commands(self) -> CommandSet:

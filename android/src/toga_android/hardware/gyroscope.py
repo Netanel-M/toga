@@ -17,14 +17,14 @@ class GyroscopeListener(dynamic_proxy(SensorEventListener)):
         pass
         
 class Gyroscope:
-    def __init__(self, interface, callback):
+    def __init__(self, interface):
         self.interface = interface
         self.context = self.interface.app._impl.native.getApplicationContext()
-        self.callback = callback
-        self.sensor_manager = context.getSystemService(Context.SENSOR_SERVICE)
+        self.sensor_manager = self.context.getSystemService(Context.SENSOR_SERVICE)
         self.sensor = self.sensor_manager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         
     def start(self, callback):
+        self.callback
         if self.sensor:
             self.listener = GyroscopeListener(callback=callback)
             self.sensor_manager.registerListener(self.listener, self.sensor, SensorManager.SENSOR_DELAY_NORMAL)
