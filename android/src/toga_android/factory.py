@@ -6,6 +6,7 @@ from .command import Command
 from .fonts import Font
 from .hardware.camera import Camera
 from .hardware.location import Location
+from .hardware.gyroscope import Gyroscope
 from .icons import Icon
 from .images import Image
 from .paths import Paths
@@ -52,6 +53,7 @@ __all__ = [
     # Hardware
     "Camera",
     "Location",
+    "Gyroscope",
     # Status icons
     "MenuStatusIcon",
     "SimpleStatusIcon",

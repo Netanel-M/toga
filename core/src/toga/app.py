@@ -16,6 +16,7 @@ from toga.command import Command, CommandSet
 from toga.documents import Document, DocumentSet
 from toga.handlers import simple_handler, wrapped_handler
 from toga.hardware.camera import Camera
+from toga.hardware.gyroscope import Gyroscope
 from toga.hardware.location import Location
 from toga.icons import Icon
 from toga.paths import Paths
@@ -138,6 +139,7 @@ class App:
     app: App
     _impl: Any
     _camera: Camera
+    _gyroscope: Gyroscope
     _location: Location
     _main_window: Window | str | None
     _running_tasks: set[asyncio.Task] = set()
@@ -709,6 +711,19 @@ class App:
             # This will raise an exception if the platform doesn't implement
             # the Camera API.
             self._camera = Camera(self)
+        return self._camera
+
+
+    @property
+    def Gyroscope(self) -> Gyroscope:
+        """A representation of the device's camera (or cameras)."""
+        try:
+            return self._gyroscope
+        except AttributeError:
+            # Instantiate the camera instance for this app on first access
+            # This will raise an exception if the platform doesn't implement
+            # the Camera API.
+            self._gyroscope = Gyroscope(self)
         return self._camera
 
     @property
